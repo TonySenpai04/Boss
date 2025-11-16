@@ -1,10 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class Poison : MonoBehaviour
+public class Stone : MonoBehaviour
 {
     [Header("Damage Settings")]
-    public float stunTime = 2f;   
+    public float damage = 10f;
     public float radius = 2f;      
     public float lifeTime = 3f;    
 
@@ -33,7 +33,7 @@ public class Poison : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifeTime);
-     
+       
     }
 
     void Update()
@@ -71,9 +71,10 @@ public class Poison : MonoBehaviour
         {
             if (hit.CompareTag("Player"))
             {
-              Debug.Log($"Player hit by poison! Stunned for {stunTime} seconds.");
+                  Destroy(this.gameObject);
+               Debug.Log("Stone deals " + damage + " damage to " + hit.name);
+
             }
         }
-        
     }
 }
